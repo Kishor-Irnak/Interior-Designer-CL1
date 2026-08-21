@@ -32,7 +32,7 @@ export default function Hero() {
       {/* --- MOBILE HEADER --- */}
       <header className="relative z-50 flex lg:hidden justify-between items-center px-5 py-6 w-full">
         <span className="text-white text-[22px] font-medium tracking-tight">
-          Refit
+          dps
         </span>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
@@ -156,56 +156,83 @@ export default function Hero() {
       {/* --- LEFT CONTENT COLUMN --- */}
       <div className="relative z-10 flex-1 flex flex-col justify-end lg:justify-between px-5 pb-10 sm:px-8 lg:px-12 xl:px-16 lg:py-10 lg:w-1/2">
         {/* Desktop Logo */}
-        <div className="hidden lg:block">
+        <motion.div
+          initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+          className="hidden lg:block"
+        >
           <span className="text-white text-[26px] font-medium tracking-tight">
-            Refit
+            dps
           </span>
-        </div>
+        </motion.div>
 
         {/* Main Text Content */}
         <div className="max-w-[540px] lg:my-auto pt-[40vh] lg:pt-0">
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2.5 bg-[#18181a]/80 backdrop-blur-md rounded-full mt-1.5 px-3.5 py-1.5 mb-6 lg:mb-7 border border-white/10">
+          <motion.div
+            initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+            className="inline-flex items-center gap-2.5 bg-[#18181a]/80 backdrop-blur-md rounded-full mt-1.5 px-3.5 py-1.5 mb-6 lg:mb-7 border border-white/10"
+          >
             <span className="w-2 h-2 rounded-full bg-white"></span>
             <span className="text-zinc-300 text-[13px] font-normal tracking-wide">
               Available for work
             </span>
-          </div>
+          </motion.div>
 
           {/* Main Headline */}
-          <h1 className="text-white text-[32px] leading-[38px] sm:text-[40px] sm:leading-[46px] lg:text-[48px] lg:leading-[56px] xl:text-[56px] xl:leading-[64px] tracking-[-0.03em] font-normal">
+          <motion.h1
+            initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.85, delay: 0.35, ease: "easeOut" }}
+            className="text-white text-[32px] leading-[38px] sm:text-[40px] sm:leading-[46px] lg:text-[48px] lg:leading-[56px] xl:text-[56px] xl:leading-[64px] tracking-[-0.03em] font-normal"
+          >
             Your trusted partner <br className="hidden sm:inline" />
             for quality home <br className="hidden sm:inline" />
             improvement
-          </h1>
+          </motion.h1>
 
           {/* Description */}
-          <p className="text-[#a1a1aa] mt-5 lg:mt-7 text-[16px] leading-[26px] lg:text-[18px] lg:leading-[28px] max-w-[440px] font-normal">
-            Refit delivers expert home improvements, creating beautiful and
+          <motion.p
+            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.85, delay: 0.5, ease: "easeOut" }}
+            className="text-[#a1a1aa] mt-5 lg:mt-7 text-[16px] leading-[26px] lg:text-[18px] lg:leading-[28px] max-w-[440px] font-normal"
+          >
+            dps delivers expert home improvements, creating beautiful and
             functional spaces with quality craftsmanship.
-          </p>
+          </motion.p>
+
 
           {/* CTA Button */}
-          <button className="mt-8 lg:mt-10 inline-flex items-center gap-4 bg-[#18181a]/80 hover:bg-[#252528] transition-all backdrop-blur-md rounded-full pl-6 pr-2 py-2 border border-white/10 group cursor-pointer">
-            <span className="text-white font-medium text-[15px]">
-              Work with us
-            </span>
-            <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-black transform transition-transform group-hover:scale-105">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </button>
+          <motion.div
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.8, delay: 0.65, ease: "easeOut" }}
+          >
+            <button className="mt-8 lg:mt-10 inline-flex items-center gap-4 bg-[#18181a]/80 hover:bg-[#252528] transition-all backdrop-blur-md rounded-full pl-6 pr-2 py-2 border border-white/10 group cursor-pointer">
+              <span className="text-white font-medium text-[15px]">
+                Work with us
+              </span>
+              <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-black transform transition-transform group-hover:scale-105">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+            </button>
+          </motion.div>
         </div>
 
         {/* Empty footer spacing element for desktop flex justification */}
@@ -213,7 +240,12 @@ export default function Hero() {
       </div>
 
       {/* --- RIGHT COLUMN - DESKTOP IMAGE CARD --- */}
-      <div className="hidden lg:block relative w-full lg:w-1/2 lg:min-h-[calc(100vh-32px)] rounded-[24px] overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98, filter: "blur(12px)" }}
+        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+        transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
+        className="hidden lg:block relative w-full lg:w-1/2 lg:min-h-[calc(100vh-32px)] rounded-[24px] overflow-hidden"
+      >
         {/* Background Kitchen Image */}
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
@@ -226,19 +258,27 @@ export default function Hero() {
 
         {/* Desktop Top Navigation Overlay */}
         <nav className="absolute top-8 right-10 flex items-center gap-9 text-white/90 text-[15px] font-normal z-20">
-          {navLinks.map((link) => (
-            <a
+          {navLinks.map((link, idx) => (
+            <motion.a
               key={link.label}
               href={link.href}
+              initial={{ opacity: 0, y: -10, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ delay: 0.4 + idx * 0.05, duration: 0.5, ease: "easeOut" }}
               className="hover:text-white transition-colors"
             >
               {link.label}
-            </a>
+            </motion.a>
           ))}
         </nav>
 
         {/* Desktop Glassmorphic Testimonial Card */}
-        <div className="absolute bottom-8 right-8 max-w-[350px] bg-black/45 backdrop-blur-xl border border-white/15 p-6 rounded-[20px] z-20 text-white shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+          className="absolute bottom-8 right-8 max-w-[350px] bg-black/45 backdrop-blur-xl border border-white/15 p-6 rounded-[20px] z-20 text-white shadow-2xl"
+        >
           <div className="flex items-center gap-1 mb-3">
             {[...Array(5)].map((_, i) => (
               <svg
@@ -255,11 +295,11 @@ export default function Hero() {
             ))}
           </div>
           <p className="text-zinc-200 text-[14px] leading-[22px] font-normal">
-            "Refit has been a game-changer for my home. Their ability to blend
+            "dps has been a game-changer for my home. Their ability to blend
             functionality with exquisite design is unparalleled."
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
