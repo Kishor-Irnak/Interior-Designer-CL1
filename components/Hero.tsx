@@ -1,10 +1,22 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function Hero() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Our work", href: "#work" },
+    { label: "FAQs", href: "#faqs" },
+    { label: "Contact", href: "#contact" },
+  ];
+
   return (
     <section className="relative min-h-[100dvh] w-full font-sans overflow-hidden flex flex-col lg:flex-row lg:bg-[#0a0a0a] lg:p-4 lg:gap-4">
       {/* --- MOBILE BACKGROUND IMAGE & OVERLAYS --- */}
-      {/* This layer is absolute and only visible on mobile screens */}
       <div className="absolute inset-0 lg:hidden z-0">
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
@@ -22,25 +34,126 @@ export default function Hero() {
         <span className="text-white text-[22px] font-medium tracking-tight">
           Refit
         </span>
-        <button aria-label="Menu" className="text-white p-1">
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          >
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          className="text-white p-2 hover:bg-white/10 rounded-full transition-colors relative z-50"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {menuOpen ? (
+              <motion.svg
+                key="close"
+                initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </motion.svg>
+            ) : (
+              <motion.svg
+                key="hamburger"
+                initial={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              >
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </motion.svg>
+            )}
+          </AnimatePresence>
         </button>
       </header>
 
+      {/* --- MOBILE FULLSCREEN MENU OVERLAY WITH SMOOTH ANIMATION --- */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed inset-0 bg-[#0a0a0a]/95 backdrop-blur-2xl z-40 flex flex-col justify-between px-6 py-8 lg:hidden"
+          >
+            {/* Nav Links Container with staggered entrance */}
+            <div className="pt-20">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.25 }}
+                className="text-zinc-500 text-[12px] font-semibold uppercase tracking-widest mb-6"
+              >
+                Navigation
+              </motion.p>
+              <nav className="flex flex-col gap-6">
+                {navLinks.map((link, idx) => (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.15 + idx * 0.05, duration: 0.3 }}
+                    className="text-white text-[28px] font-medium tracking-tight hover:text-zinc-400 transition-colors flex items-center justify-between group"
+                  >
+                    <span>{link.label}</span>
+                    <span className="text-zinc-600 group-hover:text-white transition-colors transform group-hover:translate-x-1 duration-200">
+                      →
+                    </span>
+                  </motion.a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Bottom CTA Button in Mobile Menu */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.3 }}
+              className="border-t border-white/10 pt-6"
+            >
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="w-full py-3.5 bg-white text-black font-medium text-[16px] rounded-full flex items-center justify-center gap-2 hover:bg-zinc-200 transition-colors"
+              >
+                <span>Work with us</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* --- LEFT CONTENT COLUMN --- */}
-      {/* Mobile: Pinned to bottom over the image | Desktop: Vertically centered on dark background */}
       <div className="relative z-10 flex-1 flex flex-col justify-end lg:justify-between px-5 pb-10 sm:px-8 lg:px-12 xl:px-16 lg:py-10 lg:w-1/2">
         {/* Desktop Logo */}
         <div className="hidden lg:block">
@@ -50,7 +163,6 @@ export default function Hero() {
         </div>
 
         {/* Main Text Content */}
-        {/* Added pt-[40vh] on mobile to ensure content stays down even on tall screens */}
         <div className="max-w-[540px] lg:my-auto pt-[40vh] lg:pt-0">
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2.5 bg-[#18181a]/80 backdrop-blur-md rounded-full mt-1.5 px-3.5 py-1.5 mb-6 lg:mb-7 border border-white/10">
@@ -101,7 +213,6 @@ export default function Hero() {
       </div>
 
       {/* --- RIGHT COLUMN - DESKTOP IMAGE CARD --- */}
-      {/* Entire block is hidden on mobile, as mobile uses the absolute background layer above */}
       <div className="hidden lg:block relative w-full lg:w-1/2 lg:min-h-[calc(100vh-32px)] rounded-[24px] overflow-hidden">
         {/* Background Kitchen Image */}
         <img
@@ -115,21 +226,15 @@ export default function Hero() {
 
         {/* Desktop Top Navigation Overlay */}
         <nav className="absolute top-8 right-10 flex items-center gap-9 text-white/90 text-[15px] font-normal z-20">
-          <a href="#" className="hover:text-white transition-colors">
-            About
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
-            Services
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
-            Our work
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
-            FAQs
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
-            Contact
-          </a>
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="hover:text-white transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
 
         {/* Desktop Glassmorphic Testimonial Card */}
