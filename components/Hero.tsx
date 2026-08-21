@@ -158,7 +158,8 @@ export default function Hero() {
         {/* Desktop Logo */}
         <motion.div
           initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
           className="hidden lg:block"
         >
@@ -172,7 +173,8 @@ export default function Hero() {
           {/* Status Badge */}
           <motion.div
             initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="inline-flex items-center gap-2.5 bg-[#18181a]/80 backdrop-blur-md rounded-full mt-1.5 px-3.5 py-1.5 mb-6 lg:mb-7 border border-white/10"
           >
@@ -185,7 +187,8 @@ export default function Hero() {
           {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.85, delay: 0.35, ease: "easeOut" }}
             className="text-white text-[32px] leading-[38px] sm:text-[40px] sm:leading-[46px] lg:text-[48px] lg:leading-[56px] xl:text-[56px] xl:leading-[64px] tracking-[-0.03em] font-normal"
           >
@@ -197,7 +200,8 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.85, delay: 0.5, ease: "easeOut" }}
             className="text-[#a1a1aa] mt-5 lg:mt-7 text-[16px] leading-[26px] lg:text-[18px] lg:leading-[28px] max-w-[440px] font-normal"
           >
@@ -205,11 +209,11 @@ export default function Hero() {
             functional spaces with quality craftsmanship.
           </motion.p>
 
-
           {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.65, ease: "easeOut" }}
           >
             <button className="mt-8 lg:mt-10 inline-flex items-center gap-4 bg-[#18181a]/80 hover:bg-[#252528] transition-all backdrop-blur-md rounded-full pl-6 pr-2 py-2 border border-white/10 group cursor-pointer">
@@ -242,7 +246,8 @@ export default function Hero() {
       {/* --- RIGHT COLUMN - DESKTOP IMAGE CARD --- */}
       <motion.div
         initial={{ opacity: 0, scale: 0.98, filter: "blur(12px)" }}
-        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+        whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+        viewport={{ once: true }}
         transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
         className="hidden lg:block relative w-full lg:w-1/2 lg:min-h-[calc(100vh-32px)] rounded-[24px] overflow-hidden"
       >
@@ -263,7 +268,8 @@ export default function Hero() {
               key={link.label}
               href={link.href}
               initial={{ opacity: 0, y: -10, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true }}
               transition={{ delay: 0.4 + idx * 0.05, duration: 0.5, ease: "easeOut" }}
               className="hover:text-white transition-colors"
             >
@@ -275,7 +281,8 @@ export default function Hero() {
         {/* Desktop Glassmorphic Testimonial Card */}
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
           className="absolute bottom-8 right-8 max-w-[350px] bg-black/45 backdrop-blur-xl border border-white/15 p-6 rounded-[20px] z-20 text-white shadow-2xl"
         >
