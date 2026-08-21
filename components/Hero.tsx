@@ -53,7 +53,7 @@ export default function Hero() {
         {/* Added pt-[40vh] on mobile to ensure content stays down even on tall screens */}
         <div className="max-w-[540px] lg:my-auto pt-[40vh] lg:pt-0">
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2.5 bg-[#18181a]/80 backdrop-blur-md rounded-full px-3.5 py-1.5 mb-6 lg:mb-7 border border-white/10">
+          <div className="inline-flex items-center gap-2.5 bg-[#18181a]/80 backdrop-blur-md rounded-full mt-1.5 px-3.5 py-1.5 mb-6 lg:mb-7 border border-white/10">
             <span className="w-2 h-2 rounded-full bg-white"></span>
             <span className="text-zinc-300 text-[13px] font-normal tracking-wide">
               Available for work
@@ -61,7 +61,7 @@ export default function Hero() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-white text-[38px] leading-[44px] sm:text-[50px] sm:leading-[56px] lg:text-[58px] lg:leading-[66px] xl:text-[66px] xl:leading-[74px] tracking-[-0.03em] font-normal">
+          <h1 className="text-white text-[32px] leading-[38px] sm:text-[40px] sm:leading-[46px] lg:text-[48px] lg:leading-[56px] xl:text-[56px] xl:leading-[64px] tracking-[-0.03em] font-normal">
             Your trusted partner <br className="hidden sm:inline" />
             for quality home <br className="hidden sm:inline" />
             improvement
