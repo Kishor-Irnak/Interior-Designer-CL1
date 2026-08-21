@@ -151,7 +151,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="w-full bg-[#ffffff] text-[#111111] font-sans py-20 lg:py-32"
+      className="w-full bg-[#fafafa] text-[#111111] font-sans py-20 lg:py-32"
     >
       <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16">
         {/* --- Header Section --- */}
