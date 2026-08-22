@@ -106,10 +106,10 @@ function ProjectCard({
           opacity: isLast ? 1 : opacity,
           top: `calc(70px + ${index * 20}px)`,
         }}
-        initial={{ opacity: 0, y: 32, filter: "blur(6px)" }}
+        initial={{ opacity: 0, y: 32, filter: "blur(12px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
         className={`sticky rounded-[18px] lg:rounded-[24px] p-4 sm:p-7 lg:p-10 flex flex-col lg:flex-row-reverse items-stretch gap-5 sm:gap-7 lg:gap-12 shadow-[0_-8px_30px_rgba(0,0,0,0.07)] border border-black/5 transform-gpu will-change-transform ${
           project.theme === "light"
             ? "bg-[#eff1f5] text-[#111111]"
@@ -217,27 +217,27 @@ function ProjectCard({
 export default function OurWork() {
   return (
     <section
-      className="w-full bg-[#ffffff] text-[#111111] py-16 lg:py-24 relative"
-      style={{ fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif' }}
+      id="work"
+      className="w-full bg-[#ffffff] text-[#111111] font-sans py-16 lg:py-24 relative"
     >
       <div className="max-w-[1100px] mx-auto px-5 sm:px-8">
         {/* --- Header Section --- */}
         <div className="flex flex-col items-center text-center mb-12 lg:mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
+            initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="inline-flex items-center justify-center px-3.5 py-1 rounded-full bg-[#27272a] text-white text-[11px] font-medium tracking-wide mb-5"
           >
             Our work
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="text-[34px] sm:text-[42px] lg:text-[46px] font-normal leading-[1.05] tracking-[-0.03em] text-[#111111] mb-4 max-w-[400px] lg:max-w-none"
           >
             Get inspired by our
@@ -245,10 +245,10 @@ export default function OurWork() {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+            initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             className="text-[14px] sm:text-[15px] text-[#52525b] font-normal tracking-[-0.01em] max-w-[480px] leading-[1.6]"
           >
             See how we've transformed homes with our expert craftsmanship and

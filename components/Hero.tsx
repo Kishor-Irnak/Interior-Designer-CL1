@@ -125,9 +125,35 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 bg-[#0a0a0a]/95 backdrop-blur-2xl z-50 flex flex-col justify-between px-6 py-8 lg:hidden"
+            className="fixed inset-0 bg-[#0a0a0a]/98 backdrop-blur-2xl z-50 flex flex-col justify-between px-6 py-6 lg:hidden"
           >
-            <div className="pt-20">
+            {/* Top Bar inside Overlay: Brand Logo + Prominent Close (X) Button */}
+            <div className="flex items-center justify-between w-full pt-2 pb-4 border-b border-white/10">
+              <span className="text-white text-[24px] font-medium tracking-tight">
+                dps
+              </span>
+              <button
+                onClick={() => setMenuOpen(false)}
+                aria-label="Close menu"
+                className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer flex items-center justify-center"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            {/* Navigation Items */}
+            <div className="flex-1 flex flex-col justify-center py-6">
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -145,7 +171,7 @@ export default function Hero() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.15 + idx * 0.05, duration: 0.3 }}
-                    className="text-white text-[28px] font-medium tracking-tight hover:text-zinc-400 transition-colors flex items-center justify-between group"
+                    className="text-white text-[28px] font-medium tracking-tight hover:text-zinc-400 transition-colors flex items-center justify-between group cursor-pointer"
                   >
                     <span>{link.label}</span>
                     <span className="text-zinc-600 group-hover:text-white transition-colors transform group-hover:translate-x-1 duration-200">
@@ -156,15 +182,16 @@ export default function Hero() {
               </nav>
             </div>
 
+            {/* Bottom CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.3 }}
-              className="border-t border-white/10 pt-6"
+              className="border-t border-white/10 pt-5 pb-2"
             >
               <button
                 onClick={() => setMenuOpen(false)}
-                className="w-full py-3.5 bg-white text-black font-medium text-[16px] rounded-full flex items-center justify-center gap-2 hover:bg-zinc-200 transition-colors"
+                className="w-full py-3.5 bg-white text-black font-medium text-[16px] rounded-full flex items-center justify-center gap-2 hover:bg-zinc-200 transition-colors cursor-pointer"
               >
                 <span>Work with us</span>
                 <svg
