@@ -1,12 +1,34 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [hasVideoError, setHasVideoError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      
+      const playVideo = () => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(() => {
+            // Autoplay policies
+          });
+        }
+      };
+
+      playVideo();
+
+      if (videoRef.current.readyState >= 2) {
+        setIsVideoLoaded(true);
+      }
+    }
+  }, []);
 
   const navLinks = [
     { label: "About", href: "#about" },
@@ -30,21 +52,20 @@ export default function Hero() {
         {/* Background Video */}
         {!hasVideoError && (
           <video
+            ref={videoRef}
+            src="https://res.cloudinary.com/jryvzsx4/video/upload/v1787394271/house.mp4"
             autoPlay
             loop
             muted
             playsInline
             onLoadedData={() => setIsVideoLoaded(true)}
+            onCanPlay={() => setIsVideoLoaded(true)}
+            onPlaying={() => setIsVideoLoaded(true)}
             onError={() => setHasVideoError(true)}
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
-              isVideoLoaded ? "opacity-100" : "opacity-0"
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+              isVideoLoaded ? "opacity-100" : "opacity-90"
             }`}
-          >
-            <source
-              src="https://res.cloudinary.com/jryvzsx4/video/upload/v1787394271/house.mp4"
-              type="video/mp4"
-            />
-          </video>
+          />
         )}
 
         {/* Top gradient for navbar clarity */}
