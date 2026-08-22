@@ -7,50 +7,50 @@ import { motion } from "motion/react";
 const testimonials = [
   {
     id: 1,
-    text: "Refit did an incredible job on our kitchen. The craftsmanship was top-notch, and the team was professional from start to finish. Highly recommend!",
-    author: "Emily Carter",
+    text: "The team did an incredible job on our modular kitchen refit. The craftsmanship was top-notch, and the team was extremely professional from start to finish. Highly recommended!",
+    author: "Priya Sharma",
     avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     theme: "white",
   },
   {
     id: 2,
-    text: "Brilliant service from start to finish. The team was professional, communicative, and the results exceeded my expectations. My new bathroom looks amazing!",
-    author: "James Richardson",
+    text: "Brilliant service from start to finish. The team was communicative, respectful, and the results exceeded my expectations. Our new master bathroom looks stunning!",
+    author: "Rohan Verma",
     avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     theme: "light",
   },
   {
     id: 3,
-    text: "I couldn't be happier with my loft conversion. The attention to detail and quality of work were outstanding. Refit made the whole process smooth and stress-free!",
-    author: "Sophie Williams",
+    text: "I couldn't be happier with our living room renovation. The attention to detail and quality of finish were outstanding. They made the whole process smooth and stress-free!",
+    author: "Ananya Iyer",
     avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     theme: "white",
   },
   {
     id: 4,
-    text: "Refit transformed our outdoor space with a beautiful garden path. The work was completed on time, and the finish is excellent. A great team to work with!",
-    author: "Daniel Foster",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    theme: "light",
-  },
-  {
-    id: 5,
-    text: "Fantastic workmanship! The team renovated our bathroom with precision and care. It now feels like a luxury space. Would definitely use Refit again.",
-    author: "Oliver Bennett",
+    text: "Transformed our home outdoor patio and garden walkway beautifully. The work was completed right on schedule, and the quality is premium. Fantastic team to work with!",
+    author: "Aarav Mehta",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     theme: "light",
   },
   {
-    id: 6,
-    text: "From the first consultation to the final touches, Refit delivered on every promise. Our home extension is exactly what we wanted—spacious, modern, and beautifully finished!",
-    author: "Charlotte Harris",
+    id: 5,
+    text: "Fantastic workmanship! The team renovated our interior layout with precision and care. It now feels like a luxury space. Would definitely choose them again.",
+    author: "Vikram Patel",
     avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+    theme: "light",
+  },
+  {
+    id: 6,
+    text: "From the first consultation to the final touches, they delivered on every promise. Our home extension is exactly what we dreamed of—spacious, modern, and elegant!",
+    author: "Sneha Reddy",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     theme: "white",
   },
 ];
@@ -151,28 +151,28 @@ export default function Testimonial() {
         {/* --- Header Section --- */}
         <div className="flex flex-col items-center text-center px-5 mb-10 lg:mb-16">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.65, delay: 0.1, ease: "easeOut" }}
             className="inline-flex items-center justify-center px-3.5 py-1 rounded-full bg-[#27272a] text-white text-[11px] font-medium tracking-wide mb-4 sm:mb-5"
           >
             Testimonials
           </motion.div>
           <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 22, filter: "blur(12px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-[32px] sm:text-[42px] lg:text-[46px] font-normal leading-[1.1] tracking-[-0.03em] text-[#111111] mb-3 sm:mb-4"
           >
             Hear from our clients
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: 0.2, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
             className="text-[14px] sm:text-[15px] text-[#52525b] font-normal tracking-[-0.01em] max-w-[460px] leading-[1.6]"
           >
             Hear from our happy clients about their experience working with
@@ -180,8 +180,14 @@ export default function Testimonial() {
           </motion.p>
         </div>
 
-        {/* --- Infinite Marquee Container --- */}
-        <div className="flex flex-col gap-4 sm:gap-6 w-full overflow-hidden py-1">
+        {/* --- Infinite Marquee Container with Blur Reveal --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.85, delay: 0.3, ease: "easeOut" }}
+          className="flex flex-col gap-4 sm:gap-6 w-full overflow-hidden py-1"
+        >
           {/* Row 1: Hardware-Accelerated Marquee Left */}
           <div className="flex w-full overflow-hidden">
             <div className="flex gap-3 sm:gap-6 w-max animate-marquee-left">
@@ -205,7 +211,7 @@ export default function Testimonial() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
