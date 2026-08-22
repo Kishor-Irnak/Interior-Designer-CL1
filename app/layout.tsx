@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const hanken = Hanken_Grotesk({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-hanken",
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -20,9 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={hanken.variable}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body
-        className={`${hanken.className} font-sans antialiased bg-[#0a0a0a] text-white`}
+        className={`${geistSans.className} font-sans antialiased bg-[#0a0a0a] text-white`}
         suppressHydrationWarning
       >
         {children}
@@ -30,3 +33,4 @@ export default function RootLayout({
     </html>
   );
 }
+

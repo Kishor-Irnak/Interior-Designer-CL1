@@ -2,7 +2,9 @@
 @config "../tailwind.config.js";
 
 @theme {
-  --font-sans: var(--font-hanken), "Hanken Grotesk", sans-serif;
+  --font-sans: var(--font-geist-sans), "Geist", sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
+
 
 
