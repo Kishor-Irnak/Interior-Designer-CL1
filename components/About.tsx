@@ -147,7 +147,7 @@ export default function About() {
               <div className="text-[52px] sm:text-[62px] lg:text-[72px] font-light leading-none tracking-tight text-[#111111] mb-4">
                 {stat.value}
               </div>
-              <div className="text-[15px] font-medium text-[#111111] mb-1.5">
+              <div className="text-[15px] font-normal text-[#111111] mb-1.5">
                 {stat.label}
               </div>
               <div className="text-[12px] sm:text-[13px] leading-[1.5] text-[#71717a] max-w-[210px] font-normal">
