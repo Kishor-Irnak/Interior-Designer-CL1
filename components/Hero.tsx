@@ -5,8 +5,6 @@ import { motion, AnimatePresence } from "motion/react";
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const [hasVideoError, setHasVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -14,19 +12,9 @@ export default function Hero() {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
       
-      const playVideo = () => {
-        if (videoRef.current) {
-          videoRef.current.play().catch(() => {
-            // Autoplay policies
-          });
-        }
-      };
-
-      playVideo();
-
-      if (videoRef.current.readyState >= 2) {
-        setIsVideoLoaded(true);
-      }
+      videoRef.current.play().catch(() => {
+        // Autoplay policies
+      });
     }
   }, []);
 
@@ -40,33 +28,18 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100dvh] w-full font-sans overflow-hidden flex flex-col justify-between bg-[#0a0a0a]">
-      {/* --- FULLSCREEN BACKGROUND IMAGE & VIDEO & ATMOSPHERIC GRADIENTS --- */}
+      {/* --- FULLSCREEN BACKGROUND VIDEO & ATMOSPHERIC GRADIENTS --- */}
       <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
-        {/* Background Fallback Image */}
-        <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=85"
-          alt="Modern Kitchen Interior"
+        {/* Background Video Only */}
+        <video
+          ref={videoRef}
+          src="https://res.cloudinary.com/jryvzsx4/video/upload/v1787394271/house.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-
-        {/* Background Video */}
-        {!hasVideoError && (
-          <video
-            ref={videoRef}
-            src="https://res.cloudinary.com/jryvzsx4/video/upload/v1787394271/house.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            onLoadedData={() => setIsVideoLoaded(true)}
-            onCanPlay={() => setIsVideoLoaded(true)}
-            onPlaying={() => setIsVideoLoaded(true)}
-            onError={() => setHasVideoError(true)}
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
-              isVideoLoaded ? "opacity-100" : "opacity-90"
-            }`}
-          />
-        )}
 
         {/* Top gradient for navbar clarity */}
         <div className="absolute top-0 left-0 right-0 h-44 bg-gradient-to-b from-[#0a0a0a]/90 via-[#0a0a0a]/50 to-transparent pointer-events-none z-10" />
