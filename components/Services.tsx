@@ -9,6 +9,9 @@ const servicesData = [
     title: "Kitchens",
     description:
       "At Refit, we design and build stunning kitchens tailored to your style and needs. Whether you're after a sleek modern space or a classic, timeless look, our expert team delivers high-quality craftsmanship, functionality, and attention to detail to create the heart of your home.",
+    image:
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "Rustic modern kitchen interior with warm tones and marble counters",
     icon: (
       <svg
         width="22"
@@ -32,6 +35,9 @@ const servicesData = [
     title: "Loft Conversions",
     description:
       "Unlock the hidden potential of your home by transforming your unused loft into a beautiful, functional living space.",
+    image:
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "Bright modern loft conversion with skylights and stylish wooden beams",
     icon: (
       <svg
         width="22"
@@ -54,6 +60,9 @@ const servicesData = [
     title: "Bathrooms",
     description:
       "Create your perfect sanctuary with our bespoke bathroom design and installation services.",
+    image:
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "Bespoke luxury bathroom with freestanding bathtub and elegant tiles",
     icon: (
       <svg
         width="22"
@@ -78,6 +87,9 @@ const servicesData = [
     title: "Extensions",
     description:
       "Expand your living space seamlessly with our expert home extension services.",
+    image:
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "Contemporary home extension with open-plan floor-to-ceiling glass doors",
     icon: (
       <svg
         width="22"
@@ -100,6 +112,9 @@ const servicesData = [
     title: "Restorations",
     description:
       "Breathe new life into your property with our careful and precise restoration craftsmanship.",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "Beautiful property restoration blending period features with modern design",
     icon: (
       <svg
         width="22"
@@ -123,6 +138,9 @@ const servicesData = [
     title: "External Works",
     description:
       "Enhance your home's curb appeal with our comprehensive external improvement services.",
+    image:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "High-end exterior architecture and landscaping design",
     icon: (
       <svg
         width="22"
@@ -147,6 +165,9 @@ const servicesData = [
 
 export default function Services() {
   const [openIndex, setOpenIndex] = useState<number>(0);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  const activeService = servicesData[selectedIndex] || servicesData[0];
 
   return (
     <section
@@ -189,7 +210,7 @@ export default function Services() {
 
         {/* --- Content Layout --- */}
         <div className="flex flex-col-reverse lg:flex-row gap-12 lg:gap-16 items-start">
-          {/* Left Column: Image */}
+          {/* Left Column: Dynamic Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98, filter: "blur(12px)" }}
             whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -197,19 +218,27 @@ export default function Services() {
             transition={{ duration: 0.85, delay: 0.2, ease: "easeOut" }}
             className="w-full lg:w-[48%] relative"
           >
-            <div className="w-full aspect-[4/3] sm:aspect-[4/5] lg:aspect-[4.5/5] overflow-hidden rounded-[20px] lg:rounded-[24px] bg-[#f4f4f5] group shadow-sm">
-              <img
-                src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                alt="Rustic modern kitchen interior with warm tones"
-                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-              />
+            <div className="w-full aspect-[4/3] sm:aspect-[4/5] lg:aspect-[4.5/5] overflow-hidden rounded-[20px] lg:rounded-[24px] bg-[#f4f4f5] group shadow-sm relative">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeService.title}
+                  src={activeService.image}
+                  alt={activeService.alt}
+                  initial={{ opacity: 0, scale: 1.03 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.45, ease: "easeInOut" }}
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 absolute inset-0"
+                />
+              </AnimatePresence>
             </div>
           </motion.div>
 
-          {/* Right Column: Accordion */}
+          {/* Right Column: Accordion Options */}
           <div className="w-full lg:w-[52%] flex flex-col">
             {servicesData.map((service, index) => {
               const isOpen = openIndex === index;
+              const isSelected = selectedIndex === index;
 
               return (
                 <motion.div
@@ -222,27 +251,50 @@ export default function Services() {
                     delay: 0.15 + index * 0.06,
                     ease: "easeOut",
                   }}
-                  className={`border-b border-[#e5e7eb] ${
-                    index === 0 ? "border-t-0" : ""
+                  className={`border-b transition-colors ${
+                    isSelected
+                      ? "border-[#111111]/30 bg-[#111111]/[0.02]"
+                      : "border-[#e5e7eb]"
                   }`}
                 >
                   {/* Accordion Header (Trigger) */}
                   <button
-                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                    className="w-full flex items-center justify-between py-5 lg:py-6 text-left cursor-pointer group"
+                    onClick={() => {
+                      setSelectedIndex(index);
+                      setOpenIndex(isOpen ? -1 : index);
+                    }}
+                    className="w-full flex items-center justify-between py-5 lg:py-6 px-3 text-left cursor-pointer group rounded-lg"
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center gap-5">
-                      <div className="text-[#52525b] group-hover:text-[#111111] transition-colors">
+                      <div
+                        className={`transition-colors ${
+                          isSelected
+                            ? "text-[#111111]"
+                            : "text-[#52525b] group-hover:text-[#111111]"
+                        }`}
+                      >
                         {service.icon}
                       </div>
-                      <span className="text-[16px] lg:text-[17px] font-medium text-[#111111] tracking-[-0.01em]">
+                      <span
+                        className={`text-[16px] lg:text-[17px] tracking-[-0.01em] transition-colors ${
+                          isSelected
+                            ? "font-semibold text-[#111111]"
+                            : "font-medium text-[#111111]/80 group-hover:text-[#111111]"
+                        }`}
+                      >
                         {service.title}
                       </span>
                     </div>
 
                     {/* Toggle Icon (+ / x) */}
-                    <div className="text-[#a1a1aa] group-hover:text-[#111111] transition-colors flex-shrink-0 ml-4">
+                    <div
+                      className={`transition-colors flex-shrink-0 ml-4 ${
+                        isSelected
+                          ? "text-[#111111]"
+                          : "text-[#a1a1aa] group-hover:text-[#111111]"
+                      }`}
+                    >
                       {isOpen ? (
                         <svg
                           width="18"
@@ -283,7 +335,7 @@ export default function Services() {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-6 pr-4 sm:pr-8">
+                        <div className="pb-6 px-3 pr-4 sm:pr-8">
                           <p className="text-[14px] sm:text-[15px] leading-[1.65] text-[#52525b] font-normal">
                             {service.description}
                           </p>
@@ -300,3 +352,4 @@ export default function Services() {
     </section>
   );
 }
+

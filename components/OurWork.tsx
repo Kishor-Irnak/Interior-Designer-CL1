@@ -12,7 +12,7 @@ interface Project {
   quote: string;
   authorName: string;
   authorAvatar: string;
-  image: string;
+  video: string;
   theme: string;
 }
 
@@ -28,8 +28,8 @@ const projects: Project[] = [
     authorName: "Rachel Morgan",
     authorAvatar:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    video:
+      "https://res.cloudinary.com/jryvzsx4/video/upload/v1787393536/17224760-hd_1280_720_30fps.mp4",
     theme: "light",
   },
   {
@@ -43,8 +43,8 @@ const projects: Project[] = [
     authorName: "Michael Turner",
     authorAvatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    image:
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    video:
+      "https://res.cloudinary.com/jryvzsx4/video/upload/v1787393762/2.mp4",
     theme: "dark",
   },
   {
@@ -58,8 +58,8 @@ const projects: Project[] = [
     authorName: "Laura Davies",
     authorAvatar:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    image:
-      "https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    video:
+      "https://res.cloudinary.com/jryvzsx4/video/upload/v1787393766/3.mp4",
     theme: "light",
   },
 ];
@@ -116,12 +116,15 @@ function ProjectCard({
             : "bg-[#151517] text-white"
         }`}
       >
-        {/* --- Image Section --- */}
-        {/* Rendered first in mobile flex column so full image is visible immediately upon scroll */}
+        {/* --- Video Section --- */}
+        {/* Rendered first in mobile flex column so full video is visible immediately upon scroll */}
         <div className="relative w-full lg:w-[45%] h-[200px] sm:h-[260px] lg:h-auto min-h-[200px] sm:min-h-[260px] flex-shrink-0 overflow-hidden rounded-[12px] sm:rounded-[14px] lg:rounded-[16px] group">
-          <img
-            src={project.image}
-            alt={project.title}
+          <video
+            src={project.video}
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent lg:hidden pointer-events-none" />

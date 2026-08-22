@@ -4,25 +4,25 @@ import React from "react";
 import { motion } from "motion/react";
 
 export default function About() {
-  const galleryImages = [
+  const galleryVideos = [
     {
-      src: "https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Modern dark bathroom interior",
+      src: "https://res.cloudinary.com/jryvzsx4/video/upload/v1787393536/17224760-hd_1280_720_30fps.mp4",
+      alt: "Interior renovation video 1",
       shiftClass: "translate-y-[15px] lg:translate-y-[35px]",
     },
     {
-      src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Bright modern kitchen hallway",
+      src: "https://res.cloudinary.com/jryvzsx4/video/upload/v1787393762/2.mp4",
+      alt: "Interior renovation video 2",
       shiftClass: "-translate-y-[15px] lg:-translate-y-[35px]",
     },
     {
-      src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Modern wooden house exterior",
+      src: "https://res.cloudinary.com/jryvzsx4/video/upload/v1787393766/3.mp4",
+      alt: "Interior renovation video 3",
       shiftClass: "translate-y-[15px] lg:translate-y-[35px]",
     },
     {
-      src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "White exterior patio with cactus",
+      src: "https://res.cloudinary.com/jryvzsx4/video/upload/v1787393770/4.mp4",
+      alt: "Interior renovation video 4",
       shiftClass: "-translate-y-[15px] lg:-translate-y-[35px]",
     },
   ];
@@ -105,9 +105,9 @@ export default function About() {
           </div>
         </div>
 
-        {/* --- MIDDLE ROW: STAGGERED GALLERY --- */}
+        {/* --- MIDDLE ROW: STAGGERED GALLERY (VIDEOS) --- */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-24 lg:mb-32">
-          {galleryImages.map((img, idx) => (
+          {galleryVideos.map((video, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 28, filter: "blur(12px)" }}
@@ -118,11 +118,14 @@ export default function About() {
                 delay: 0.15 + idx * 0.1,
                 ease: "easeOut",
               }}
-              className={`w-full h-[280px] sm:h-[380px] lg:h-[460px] rounded-[18px] sm:rounded-[22px] lg:rounded-[24px] overflow-hidden group bg-zinc-100 ${img.shiftClass}`}
+              className={`w-full h-[280px] sm:h-[380px] lg:h-[460px] rounded-[18px] sm:rounded-[22px] lg:rounded-[24px] overflow-hidden group bg-zinc-100 ${video.shiftClass}`}
             >
-              <img
-                src={img.src}
-                alt={img.alt}
+              <video
+                src={video.src}
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </motion.div>
