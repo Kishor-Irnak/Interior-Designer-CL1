@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "motion/react";
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [hasVideoError, setHasVideoError] = useState(false);
 
   const navLinks = [
     { label: "About", href: "#about" },
@@ -16,21 +18,43 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100dvh] w-full font-sans overflow-hidden flex flex-col justify-between bg-[#0a0a0a]">
-      {/* --- FULLSCREEN BACKGROUND IMAGE & ATMOSPHERIC GRADIENTS --- */}
-      <div className="absolute inset-0 z-0">
+      {/* --- FULLSCREEN BACKGROUND IMAGE & VIDEO & ATMOSPHERIC GRADIENTS --- */}
+      <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
+        {/* Background Fallback Image */}
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=85"
           alt="Modern Kitchen Interior"
-          className="w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
+
+        {/* Background Video */}
+        {!hasVideoError && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            onLoadedData={() => setIsVideoLoaded(true)}
+            onError={() => setHasVideoError(true)}
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${
+              isVideoLoaded ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <source
+              src="https://res.cloudinary.com/jryvzsx4/video/upload/v1787394271/house.mp4"
+              type="video/mp4"
+            />
+          </video>
+        )}
+
         {/* Top gradient for navbar clarity */}
-        <div className="absolute top-0 left-0 right-0 h-44 bg-gradient-to-b from-[#0a0a0a]/90 via-[#0a0a0a]/50 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-44 bg-gradient-to-b from-[#0a0a0a]/90 via-[#0a0a0a]/50 to-transparent pointer-events-none z-10" />
 
         {/* Dynamic side & bottom gradient for text contrast across mobile & desktop */}
-        <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/80 lg:via-[#0a0a0a]/65 to-black/35 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/80 lg:via-[#0a0a0a]/65 to-black/35 pointer-events-none z-10" />
 
         {/* Bottom edge fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent pointer-events-none z-10" />
       </div>
 
       {/* --- TOP HEADER / NAVBAR --- */}
